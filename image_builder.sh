@@ -39,6 +39,19 @@ function get_fedora () {
   _offset=$((_offset*512))
 }
 
+function set_rpi_boot {
+
+curl -L -o raspberry-firmware.zip https://github.com/raspberrypi/firmware/archive/master.zip
+unzip raspberry-firmware.zip
+
+cp -r firmware-master/boot/* /tmp/rpi/boot/
+cp -r firmware-master/modules/* /tmp/rpi/lib/modules/
+
+echo "dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 \
+root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait"\
+>/mnt/sdcard/boot/cmdline.txt
+}
+
 function setup_device () {
   cat <<- EOF | fdisk /dev/${_device}
 o
