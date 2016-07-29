@@ -34,7 +34,7 @@ function get_fedora () {
   wget -c download.fedoraproject.org/pub/fedora/linux/releases/24/Spins/armhfp/images/Fedora-${_variant}-armhfp-24-1.2-sda.raw.xz
   git clone --depth=1 git://github.com/p3ck/rpi2-fedora
   git clone --depth=1 git://github.com/p3ck/firmware
-  xz -kd Fedora-${_variant}-armhfp-23-10-sda.raw.xz
+  xz -kd Fedora-${_variant}-armhfp-24-1.2-sda.raw.xz
   _offset=$(partx /root/temp/Fedora-${_variant}-armhfp-24-1.2-sda.raw | tail -n 1 | awk '{print $2}')
   _offset=$((_offset*512))
 }
