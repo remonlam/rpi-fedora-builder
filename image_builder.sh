@@ -38,8 +38,8 @@ function get_fedora () {
   mkdir -p /root/temp/
   cd /root/temp
   wget -c download.fedoraproject.org/pub/fedora/linux/releases/24/Spins/armhfp/images/Fedora-${_variant}-armhfp-24-1.2-sda.raw.xz
-  git clone --depth=1 git://github.com/p3ck/rpi2-fedora
-  git clone --depth=1 git://github.com/p3ck/firmware
+  #git clone --depth=1 git://github.com/p3ck/rpi2-fedora # moved to RPI-Firmware
+  #git clone --depth=1 git://github.com/p3ck/firmware # moved to RPI-Firmware
   xz -kd Fedora-${_variant}-armhfp-24-1.2-sda.raw.xz
   _offset=$(partx /root/temp/Fedora-${_variant}-armhfp-24-1.2-sda.raw | tail -n 1 | awk '{print $2}')
   _offset=$((_offset*512))
@@ -53,7 +53,7 @@ wget -P $firm_location https://github.com/raspberrypi/firmware/archive/master.zi
 unzip -qq $firm_location/master.zip
 
 cp -r $firm_location/firmware-master/boot/* $sd_mount_locaton/boot/
-cp -r $firm_location/firmware-master/modules/* $sd_mount_locaton/lib/modules/
+cp -rf $firm_location/firmware-master/modules/* $sd_mount_locaton/lib/modules/
 cp -r $git_location/config.txt $sd_mount_locaton/boot/
 echo "dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait" > $sd_mount_locaton/boot/cmdline.txt
 
