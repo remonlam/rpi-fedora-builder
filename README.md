@@ -1,0 +1,3 @@
+# Create a Raspberry Pi 3 Fedora ARM 24 image
+
+Need to write this one, but for now, if you want to run Fedora on an RPI3 you could use this script to create a image...
