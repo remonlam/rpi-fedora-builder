@@ -55,9 +55,9 @@ cp -r firmware-master/modules/* /tmp/rpi/lib/modules/
 
 echo "dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 \
 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait"\
->/mnt/sdcard/boot/cmdline.txt #check location
+>/mnt/sdcard/boot/cmdline.txt #check location, it should be ok...
 
-rm -rf /mnt/sdcard/boot/{grub,grub2,extlinux}
+rm -rf /mnt/sdcard/boot/{grub,grub2,extlinux} # this is not used on the RPI so it clould be removed to save disk space
 
 
 }
