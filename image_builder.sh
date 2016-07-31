@@ -1,5 +1,9 @@
 #! /bin/bash
 
+### VARIABLES
+firm_location=/root/temp
+
+
 ### FUNCTIONS
 function setup_vars () {
   if [ -z "$_variant" ]; then
@@ -39,18 +43,25 @@ function get_fedora () {
   _offset=$((_offset*512))
 }
 
+#
 function set_rpi_boot {
-
-curl -L -o raspberry-firmware.zip https://github.com/raspberrypi/firmware/archive/master.zip
-unzip raspberry-firmware.zip
+#curl -L -o raspberry-firmware.zip https://github.com/raspberrypi/firmware/archive/master.zip #move it to git
+cd /mnt/sdcard/boot
+wget -P $firm_location https://github.com/raspberrypi/firmware/archive/master.zip
+unzip -qq raspberry-firmware.zip
 
 cp -r firmware-master/boot/* /tmp/rpi/boot/
 cp -r firmware-master/modules/* /tmp/rpi/lib/modules/
 
 echo "dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 \
 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait"\
->/mnt/sdcard/boot/cmdline.txt
+>/mnt/sdcard/boot/cmdline.txt #check location
+
+rm -rf /mnt/sdcard/boot/{grub,grub2,extlinux}
+
+
 }
+#
 
 function setup_device () {
   cat <<- EOF | fdisk /dev/${_device}
@@ -169,5 +180,6 @@ setup_device
 format_parts
 mount_dirs
 setup_fedora
-install_firmware
+set_rpi_boot
+#install_firmware
 unmount_card
