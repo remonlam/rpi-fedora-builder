@@ -179,4 +179,4 @@ mount_dirs
 setup_fedora
 set_rpi_boot
 #install_firmware
-#unmount_card
+unmount_card
