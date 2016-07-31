@@ -48,17 +48,12 @@ function set_rpi_boot {
 #curl -L -o raspberry-firmware.zip https://github.com/raspberrypi/firmware/archive/master.zip #move it to git
 cd /mnt/sdcard/boot
 wget -P $firm_location https://github.com/raspberrypi/firmware/archive/master.zip
-unzip -qq raspberry-firmware.zip
+unzip -qq $firm_location/master.zip
 
-cp -r firmware-master/boot/* /tmp/rpi/boot/
-cp -r firmware-master/modules/* /tmp/rpi/lib/modules/
+cp -r $firm_location/firmware-master/boot/* /mnt/sdcard/boot/
+cp -r $firm_location/firmware-master/modules/* /mnt/sdcard/lib/modules/
 
-echo "dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 \
-root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait"\
->/mnt/sdcard/boot/cmdline.txt #check location, it should be ok...
-
-rm -rf /mnt/sdcard/boot/{grub,grub2,extlinux} # this is not used on the RPI so it clould be removed to save disk space
-
+echo "dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait" >/mnt/sdcard/boot/cmdline.txt #check location, it should be ok...
 
 }
 #
@@ -182,4 +177,4 @@ mount_dirs
 setup_fedora
 set_rpi_boot
 #install_firmware
-unmount_card
+#unmount_card
