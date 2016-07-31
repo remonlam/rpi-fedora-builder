@@ -176,7 +176,7 @@ get_fedora
 setup_device
 format_parts
 mount_dirs
-setup_fedora
-set_rpi_boot
+#setup_fedora
+#set_rpi_boot
 #install_firmware
 #unmount_card
