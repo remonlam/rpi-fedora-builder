@@ -2,6 +2,7 @@
 
 ### VARIABLES
 firm_location=/root/temp
+git_location=/root/rpi-fedora-builder
 
 
 ### FUNCTIONS
@@ -52,7 +53,7 @@ unzip -qq $firm_location/master.zip
 
 cp -r $firm_location/firmware-master/boot/* /mnt/sdcard/boot/
 cp -r $firm_location/firmware-master/modules/* /mnt/sdcard/lib/modules/
-
+cp -r $git_location/config.txt /mnt/sdcard/boot/
 echo "dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait" >/mnt/sdcard/boot/cmdline.txt #check location, it should be ok...
 
 }
