@@ -3,6 +3,7 @@
 ### VARIABLES
 firm_location=/root/temp
 git_location=/root/rpi-fedora-builder
+sd_mount_locaton=/mnt/sdcard/
 
 
 ### FUNCTIONS
@@ -51,10 +52,10 @@ cd /mnt/sdcard/boot
 wget -P $firm_location https://github.com/raspberrypi/firmware/archive/master.zip
 unzip -qq $firm_location/master.zip
 
-cp -r $firm_location/firmware-master/boot/* /mnt/sdcard/boot/
-cp -r $firm_location/firmware-master/modules/* /mnt/sdcard/lib/modules/
-cp -r $git_location/config.txt /mnt/sdcard/boot/
-echo "dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait" >/mnt/sdcard/boot/cmdline.txt #check location, it should be ok...
+cp -r $firm_location/firmware-master/boot/* $sd_mount_locaton/boot/
+cp -r $firm_location/firmware-master/modules/* $sd_mount_locaton/lib/modules/
+cp -r $git_location/config.txt $sd_mount_locaton/boot/
+echo "dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait" > $sd_mount_locaton/boot/cmdline.txt
 
 }
 #
