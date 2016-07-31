@@ -49,7 +49,7 @@ function get_fedora () {
 function set_rpi_boot {
 #curl -L -o raspberry-firmware.zip https://github.com/raspberrypi/firmware/archive/master.zip #move it to git
 cd /mnt/sdcard/boot
-wget -P $firm_location https://github.com/raspberrypi/firmware/archive/master.zip
+wget -P $firm_location -c https://github.com/raspberrypi/firmware/archive/master.zip
 unzip -qq $firm_location/master.zip
 
 cp -r $firm_location/firmware-master/boot/* $sd_mount_locaton/boot/
