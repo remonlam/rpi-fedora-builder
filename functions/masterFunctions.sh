@@ -10,14 +10,14 @@
 # Import other functions
 . ./functions/functionGetFedoraSource.sh
 . ./functions/functionRpiBoot.sh
-
-. ./functions/functionDisableSystemctlServices.sh
-. ./functions/functionDisableSystemdServices.sh
-. ./functions/functionFindSource.sh
-. ./functions/functionFormatDisk.sh
+. ./functions/functionUnmount.sh
 . ./functions/functionRootCheck.sh
-. ./functions/functionRootPassword.sh
-. ./functions/functionSelectArmVersion.sh
+. ./functions/functionCopyImage.sh
+. ./functions/functionCreateMounts.sh
+. ./functions/functionCreateFS.sh
+. ./functions/functionCreatePartitions.sh
+. ./functions/functionSetVars.sh
+
 . ./functions/functionShowConfig.sh
 . ./functions/functionSystemPreConfiguration.sh
 . ./functions/functionsNetworkProfileSelection.sh
