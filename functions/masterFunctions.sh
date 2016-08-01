@@ -17,7 +17,3 @@
 . ./functions/functionCreateFS.sh
 . ./functions/functionCreatePartitions.sh
 . ./functions/functionSetVars.sh
-
-. ./functions/functionShowConfig.sh
-. ./functions/functionSystemPreConfiguration.sh
-. ./functions/functionsNetworkProfileSelection.sh
