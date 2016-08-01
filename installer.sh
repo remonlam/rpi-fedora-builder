@@ -8,9 +8,9 @@
 functionRootCheck
 functionSetVars
 functionGetFedoraSource
-#functionCreatePartitions
-#functionCreateFS
-#functionCreateMounts
-#functionCopyImage
-#functionRpiBoot
-#functionUnmount
+functionCreatePartitions
+functionCreateFS
+functionCreateMounts
+functionCopyImage
+functionRpiBoot
+functionUnmount
