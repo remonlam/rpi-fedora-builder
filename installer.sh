@@ -13,5 +13,4 @@ functionCreateFS
 functionCreateMounts
 functionCopyImage
 functionRpiBoot
-#install_firmware
 functionUnmount
