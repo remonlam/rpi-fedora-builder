@@ -2,7 +2,7 @@
 
 function  functionRpiBoot {
 wget -P $firm_location -c https://github.com/raspberrypi/firmware/archive/master.zip
-unzip -d $firm_location -qq $firm_location/master.zip
+unzip -f -d $firm_location -qq $firm_location/master.zip
 cp -rf $firm_location/firmware-master/boot/* $sd_mount_locaton/boot/
 cp -rf $firm_location/firmware-master/modules/* $sd_mount_locaton/lib/modules/
 cp -rf $git_location/sources/boot/config.txt $sd_mount_locaton/boot/
