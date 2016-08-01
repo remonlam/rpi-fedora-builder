@@ -8,8 +8,9 @@
 . ./functions/masterVariables.sh
 
 # Import other functions
-. ./functions/functionCheckForImage.sh
-. ./functions/functionCleanup.sh
+. ./functions/functionGetFedoraSource.sh
+. ./functions/functionRpiBoot.sh
+
 . ./functions/functionDisableSystemctlServices.sh
 . ./functions/functionDisableSystemdServices.sh
 . ./functions/functionFindSource.sh
